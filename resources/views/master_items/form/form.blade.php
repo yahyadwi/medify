@@ -33,6 +33,24 @@
         <input type="number" class="form-control" name="laba" required value="{{$item->laba ?? ''}}">
     </div>
 
+     <div class="form-group mb-3">
+        <label>Kategori Items</label>
+        <div class="row">
+            @foreach($all_categories as $kat)
+                <div class="col-md-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="kategori_ids[]" 
+                            value="{{ $kat->id }}" id="kat-{{ $kat->id }}"
+                            {{ (isset($item) && $item->KategoriItems->contains($kat->id)) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="kat-{{ $kat->id }}">
+                            {{ $kat->nama_kategori }} ({{ $kat->kode_kategori }})
+                        </label>
+                    </div>
+                </div>
+            @endforeach 
+        </div>
+    </div>
+
     @php $selected = $item->supplier ?? ''; @endphp
     <div class="form-group">
         <label>Supplier</label>
@@ -58,6 +76,8 @@
                 <optio @if($selected == 'ATK') selected @endif>ATK</option>
         </select>
     </div>
+
+    
 
     <button class="btn btn-primary mt-3">Submit</button>
 

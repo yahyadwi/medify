@@ -25,6 +25,9 @@
                 <input type="number" class="form-control" id="filter-harga-max">
             </div>
         </div>
+        <button class="btn btn-primary mt-1 btn-get-data">Filter</button>
+        <a href="{{ url('master-items/export-excel') }}" class="btn btn-success">Download Excel</a>
+        <span id="loading-filter" style="display: none;">Loading...</span>
     </div>
     <button class="btn btn-primary mt-1 btn-get-data">Filter</button>
     <span id="loading-filter" style="display: none;">Loading...</span>
