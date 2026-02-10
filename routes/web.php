@@ -1,6 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MasterItemsController;
+use App\Http\Controllers\KategoriItemsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +23,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/master-items', [App\Http\Controllers\MasterItemsController::class, 'index']);
@@ -31,3 +36,8 @@ Route::get('/master-items/delete/{id}', [App\Http\Controllers\MasterItemsControl
 
 
 Route::get('/master-items/update-random-data', [App\Http\Controllers\MasterItemsController::class, 'updateRandomData']);
+
+Route::get('kategori-items', [KategoriItemsController::class, 'index']);
+Route::post('kategori-items', [KategoriItemsController::class, 'store']);
+Route::get('kategori-items/{id}', [KategoriItemsController::class, 'show']);
+Route::get('kategori-items/delete/{id}', [KategoriItemsController::class, 'destroy']);
